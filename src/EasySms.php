@@ -101,7 +101,7 @@ class EasySms
      * 
      * @return \Wincy\EasySms\Contracts\MessgeInterface
      */
-    public function formatMessage($message)
+    protected function formatMessage($message)
     {
         if (!($message instanceof MessageInterface)) {
             if (!is_array($message)) {
@@ -109,9 +109,8 @@ class EasySms
                     'content' => strval($message),
                     'template' => strval($message),
                 ];
-
-                $message = new Message($message);
             }
+            $message = new Message($message);
         }
 
         return $message;

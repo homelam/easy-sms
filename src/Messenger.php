@@ -61,6 +61,8 @@ class Messenger
                     'status' => self::STATUS_SUCCESS,
                     'result' => $this->easySms->gateway($gateway)->send($to, $message, new Config($gateways[$gateway])),
                 ];
+                $isSuccessful = true;
+                break;
             } catch (\Throwable $e) {
                 $results[$gateway] = [
                     'gateway' => $gateway,
@@ -105,7 +107,7 @@ class Messenger
             $globalSetting = $config->get("gateways.{$gateway}", []);
 
             if (is_string($gateway) && !empty($globalSetting) && is_array($setting)) {
-                $formattedp[$gateway] = array_merge($globalSetting, $setting);
+                $formatted[$gateway] = array_merge($globalSetting, $setting);
             }
         }
 

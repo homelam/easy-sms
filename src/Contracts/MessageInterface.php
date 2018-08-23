@@ -20,7 +20,7 @@ Interface MessageInterface
      * 
      * @return string
      */
-    public function getContent(GatewayInterace $gateway = null);
+    public function getContent(GatewayInterface $gateway = null);
 
     /**
      * 信息的模板id

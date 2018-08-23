@@ -22,7 +22,7 @@
 ## 安装
 
 ```shell
-$ composer require "wincy/easy-sms"
+$ composer require "homelam/easy-sms"
 ```
 
 ## 使用

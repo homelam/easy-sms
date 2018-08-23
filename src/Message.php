@@ -3,8 +3,9 @@
 namespace Wincy\EasySms;
 
 use Wincy\EasySms\Contracts\GatewayInterface;
+use Wincy\EasySms\Contracts\MessageInterface;
 
-class Message implements \Wincy\EasySms\Contracts\MessageInterface
+class Message implements MessageInterface
 {
     /**
      * @var array
@@ -42,9 +43,9 @@ class Message implements \Wincy\EasySms\Contracts\MessageInterface
         $this->type = $type;
 
         foreach ($attributes as $property => $value) {
-            // preperty_exists 检查对象或类是否具有该属性
+            // property_exists 检查对象或类是否具有该属性
             if (property_exists($this, $property)) {
-                $this->property = $value;
+                $this->$property = $value;
             }
         }
     }
@@ -66,7 +67,7 @@ class Message implements \Wincy\EasySms\Contracts\MessageInterface
      * 
      * @return string
      */
-    public function getContent(GatewayInterace $gateway = null)
+    public function getContent(GatewayInterface $gateway = null)
     {
         return $this->content;
     }

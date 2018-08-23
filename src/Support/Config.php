@@ -80,10 +80,10 @@ class Config implements ArrayAccess
      *
      * @param mixed $offset 
      */
-    public function offsetSet($offset)
+    public function offsetSet($offset, $value)
     {
         if (issset($this->config[$offset])) {
-            $this->config[$offset];
+            $this->config[$offset] = $value;
         }
     }
 
@@ -92,7 +92,7 @@ class Config implements ArrayAccess
      * 
      * @param mixed $offset
      */
-    public function offsetUnset()
+    public function offsetUnset($offset)
     {
         if (isset($this->config[$offset])) {
             unset($this->config[$offset]);
